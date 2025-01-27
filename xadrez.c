@@ -4,6 +4,12 @@
 
 int main() {
     int escolha;
+
+    //Variaveis para movimento do cavalo
+    int cavalo;
+    int cav1 = 0;
+    int cav2 = 0;
+
     do {
         printf("\n\n-------------------- MENU INTERATIVO --------------------\n\n");
         printf("O que deseja fazer? \n");
@@ -18,65 +24,64 @@ int main() {
             case 1:
                 printf("-------------------- MOVIMENTANDO O BISPO -------------------- \n\n");
                 for (int i = 0; i < 5; i++)
-                    printf("Cima, direita \n");
-            break;
+                   printf("Cima, direita \n");
+                break;
             
             case 2:
                 printf("-------------------- MOVIMENTANDO A TORRE -------------------- \n\n");
                 for (int i = 0; i < 5; i++)
                     printf("Direita \n");
-            break;
+                break;
 
             case 3:
                 printf("-------------------- MOVIMENTANDO A RAINHA -------------------- \n\n");
                 for (int i = 0; i < 8; i++)
                     printf("Esquerda \n");
-            break;
+                break;
 
             case 4:
-                int cavalo;
                 printf("Como gostaria de movimentar o cavalo?\n\n");
                 printf("1 - Dois movimentos para baixo e um para cima.\n");
                 printf("2 - Um movimento para baixo e dois para a esquerda.\n");
                 scanf("%d", &cavalo);
 
+                printf("%d \n", cavalo);
+
                 printf("\n\n-------------------- MOVIMENTANDO O CAVALO -------------------- \n\n");
 
-                switch (cavalo) {
+                switch (cavalo){
                     case 1:
                         for (int i = 0; i < 1; i++) {
                             for (int j = 0; j < 2; j++)
                                 printf("Baixo \n");
-                        printf("Esquerda");
+                        printf("Esquerda \n");
                         }
-                    break;
+                        break;
                     
                     case 2:
-                        int i = 0;
-                        while (i<1) {
+                        while (cav1 < 1) {
                             printf("Baixo \n");
-                            int j = 0;
-                            while (j <2){
+                            while (cav2 < 2){
                                 printf("Esquerda \n");
-                                j++;
+                                cav2++;
                             }
-                            i++;
+                            cav1++;
                         }
-                    break;
-                    
+                        break;
+
                     default:
                         printf("***** VALOR INVÁLIDO!! *****\n\n\n");
-                    break;
+                        break;
                 }
-            break;
+                break;
 
             case 5:
                 printf("\n\n***** SAINDO... *****\n\n\n");
-            break;
+                break;
 
             default:
                 printf("***** VALOR INVÁLIDO!! *****\n\n\n");
-            break;
+                break;
         }
     } while (escolha != 5);
     
