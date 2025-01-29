@@ -2,13 +2,26 @@
 
 // Desafio de Xadrez - MateCheck
 
-int main() {
-    int escolha;
+void bispo (){ //Void para o movimento do bispo
+    for (int i = 0; i < 5; i++) { // for para que o bloco de codigo rode 5 vezes
+        for (int j = 0; j < 1; j++) //segundo for para printar no terminal o primeiro movimento do bispo
+        printf("Direita, ");
+    printf("cima \n"); //impressao do segundo movimento do bispo
+    }
+}
 
-    //Variaveis para movimento do cavalo
-    int cavalo;
-    int cav1 = 0;
-    int cav2 = 0;
+void torre (){ //Void para o movimento da torre
+    for(int i = 0; i < 5; i++) //enquanto i for menor que 5, "direita" é imprimido na tela
+        printf("Direita.\n");
+}
+
+void rainha (){ //Void para o movimento da rainha
+    for(int i = 0; i < 8; i++) //enquanto i for menor que 8, "esquerda" é imprimido na tela
+        printf("Esquerda.\n");
+}
+
+int main() {
+    int escolha; //Variavel para o usuário interagir com o menu
 
     do {
         printf("\n\n-------------------- MENU INTERATIVO --------------------\n\n");
@@ -21,69 +34,40 @@ int main() {
         scanf("%d", &escolha);
 
         switch (escolha){
-            case 1:
+            case 1: //movimento do bispo
                 printf("-------------------- MOVIMENTANDO O BISPO -------------------- \n\n");
-                for (int i = 0; i < 5; i++)
-                   printf("Cima, direita \n");
+                bispo(); //puxa função recursiva bispo, para o movimento do mesmo
                 break;
             
-            case 2:
+            case 2: //movimento da torre
                 printf("-------------------- MOVIMENTANDO A TORRE -------------------- \n\n");
-                for (int i = 0; i < 5; i++)
-                    printf("Direita \n");
+                torre(); //puxa função recursiva torre, para o movimento da mesma
                 break;
 
-            case 3:
+            case 3: //movimento da rainha
                 printf("-------------------- MOVIMENTANDO A RAINHA -------------------- \n\n");
-                for (int i = 0; i < 8; i++)
-                    printf("Esquerda \n");
+                rainha(); //puxa função recursiva rainha, para o movimento da mesma
                 break;
 
-            case 4:
-                printf("Como gostaria de movimentar o cavalo?\n\n");
-                printf("1 - Dois movimentos para baixo e um para cima.\n");
-                printf("2 - Um movimento para baixo e dois para a esquerda.\n");
-                scanf("%d", &cavalo);
-
-                printf("%d \n", cavalo);
-
+            case 4: //movimento do cavalo
                 printf("\n\n-------------------- MOVIMENTANDO O CAVALO -------------------- \n\n");
-
-                switch (cavalo){
-                    case 1:
-                        for (int i = 0; i < 1; i++) {
-                            for (int j = 0; j < 2; j++)
-                                printf("Baixo \n");
-                        printf("Esquerda \n");
-                        }
-                        break;
-                    
-                    case 2:
-                        while (cav1 < 1) {
-                            printf("Baixo \n");
-                            while (cav2 < 2){
-                                printf("Esquerda \n");
-                                cav2++;
-                            }
-                            cav1++;
-                        }
-                        break;
-
-                    default:
-                        printf("***** VALOR INVÁLIDO!! *****\n\n\n");
-                        break;
+                for(int i = 0, j = 3; i < 3; i++, j--){//enquanto i < 3, é executado o bloco de código
+                    printf ("Cima.\n");
+                    if (j > 1) continue; //Se j > 3, "print("direita")" será "pulado"
+                    else //quando finalmente j <= 1, o cavalo fará o movimento para a direita
+                        printf("Direita.\n");
                 }
                 break;
 
-            case 5:
+            case 5: //encerra o programa
                 printf("\n\n***** SAINDO... *****\n\n\n");
                 break;
 
-            default:
+            default: // para o caso do usuario inserir um valor diferente de 1 a 5 
                 printf("***** VALOR INVÁLIDO!! *****\n\n\n");
                 break;
         }
-    } while (escolha != 5);
+    } while (escolha != 5); //Encerramento do loop.
     
     return 0;
     
